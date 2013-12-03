@@ -6,17 +6,17 @@ Installation script for dotfiles repositories.
 
 Assuming your Dotfiles repo under `git@github.com:kassi/Dotfiles.git`:
 
-    curl https://raw.github.com/kassi/Dotfiles.install/master/install.sh | bash -s git@github.com:kassi/Dotfiles.git
+    curl -fsSL https://raw.github.com/kassi/Dotfiles.install/master/install.sh | bash -s git@github.com:kassi/Dotfiles.git
 
 If you have https://hub.github.com/ installed and your repo is called `dotfiles`, a simple
 
-    curl https://raw.github.com/kassi/Dotfiles.install/master/install.sh | bash
+    curl -fsSL https://raw.github.com/kassi/Dotfiles.install/master/install.sh | bash
 
 will do.
 
 If you do not want to clone your dotfiles repo into `~/Library`, you can choose a different destination by giving a second optional argument like
 
-    curl https://raw.github.com/kassi/Dotfiles.install/master/install.sh | bash -s dotfiles lib
+    curl -fsSL https://raw.github.com/kassi/Dotfiles.install/master/install.sh | bash -s dotfiles lib
 
 which will clone into `~/lib`.
 
