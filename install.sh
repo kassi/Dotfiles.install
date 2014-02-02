@@ -21,19 +21,24 @@ fi
 lib_path=~/$destination/$name
 
 if [[ -e "$lib_path" ]]; then
-  echo "Library path '$lib_path' already exists. Aborting!"
-  exit 1
+  echo "Library path '$lib_path' already exists."
+  cd "$lib_path"
+  if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
+    echo "Git repository is dirty. Skipping pull."
+  else
+    git pull --rebase
+  fi
+else
+  # checkout
+  #
+  cd ~/Library
+  git clone $repo
 fi
 
 # strip /Users/Name/Library/Dotfiles[.private] from path
 subpath() {
   echo "$1"| cut -d"/" -f6-
 }
-
-# checkout
-#
-cd ~/Library
-git clone $repo
 
 # link
 #
