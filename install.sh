@@ -16,13 +16,13 @@ fi
 name=$(basename $repo .git)
 destination="$2"
 if [[ -z "$destination" ]]; then
-  destination="Library"
+  destination="Systems"
 fi
-lib_path=~/$destination/$name
+dest_path=~/$destination/$name
 
-if [[ -e "$lib_path" ]]; then
-  echo "Library path '$lib_path' already exists."
-  cd "$lib_path"
+if [[ -e "$dest_path" ]]; then
+  echo "Destination path '$dest_path' already exists."
+  cd "$dest_path"
   if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
     echo "Git repository is dirty. Skipping pull."
   else
@@ -31,7 +31,7 @@ if [[ -e "$lib_path" ]]; then
 else
   # checkout
   #
-  cd ~/Library
+  cd ~/$destination
   git clone $repo
 fi
 
@@ -45,7 +45,7 @@ subpath() {
 cd ~
 
 # First create all directories
-for file in $(find $lib_path -name '.git' -prune  -o -type d -mindepth 1 -print); do
+for file in $(find $dest_path -name '.git' -prune  -o -type d -mindepth 1 -print); do
   path=$(subpath $file)
   if [[ -e "$path" ]]; then
     if [[ ! -d "$path" ]]; then
@@ -58,7 +58,7 @@ for file in $(find $lib_path -name '.git' -prune  -o -type d -mindepth 1 -print)
 done
 
 # Then link all files given
-for file in $(find $lib_path -name '.git' -prune -o -name 'README.md' -prune -o -type f -print); do
+for file in $(find $dest_path -name '.git' -prune -o -name 'README.md' -prune -o -type f -print); do
   path=$(subpath $file)
 
   if [[ -L "$path" ]]; then

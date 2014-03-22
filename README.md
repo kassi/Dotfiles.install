@@ -14,7 +14,7 @@ If you have https://hub.github.com/ installed and your repo is called `dotfiles`
 
 will do.
 
-If you do not want to clone your dotfiles repo into `~/Library`, you can choose a different destination by giving a second optional argument like
+If you do not want to clone your dotfiles repo into `~/Systems`, you can choose a different destination by giving a second optional argument like
 
     curl -fsSL https://raw.github.com/kassi/Dotfiles.install/master/install.sh | bash -s dotfiles lib
 
@@ -35,8 +35,8 @@ It will print out a message if the existing symbolic link doesn't point to the s
 
 Why do I need this?
 
-Because I have two dotfiles repositories and both installations behave the same.
-One is public, another one is private and not on a public hoster.
+Because I have two dotfiles repositories plus an additional system additions repository and all installations behave the same.
+Some are public, another one is private and not on a public hoster.
 
 You may think of having your email address inside .gitconfig (public) or inside a .gitconfig.private (private repo), included by .gitconfig.
 
