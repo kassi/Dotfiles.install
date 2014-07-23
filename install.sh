@@ -124,16 +124,11 @@ DESTINATION_PATH="$DESTINATION_DIR/$NAME"
 link_file () {
   local src=$1 dst=$2
 
-  echo "src: $src"
-  echo "dst: $dst"
   # strip leading $HOME if destination is in home directory
   dst_dir=$(dirname $dst)
-  echo "dir: $dst_dir"
   if [[ $dst_dir == $HOME ]]; then
     src=${src/#$HOME\//}
-    echo "new: $src"
   fi
-  echo "now: $src"
 
   local overwrite= backup= skip=
   local actions=
